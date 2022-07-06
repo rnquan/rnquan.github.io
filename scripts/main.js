@@ -1,48 +1,83 @@
-// const myHeading = document.querySelector('h1');
-// myHeading.textContent = 'Hello world!';
-// alert('dog');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-// // function multiply(num1,num2) {
-// //     let result = num1 * num2;
-// //     return result;
-// //   }
-// // console.log(multiply(4, 7));
-// // multiply(20, 20);
-// // multiply(0.5, 3);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+
+const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
+// const edges = new THREE.EdgesGeometry( geometry );
+// const line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
+//scene.add( line );
+face = 0;
+camera.position.z = 5;
+renderer.render( scene, camera );
+function animateR() {
+    id = requestAnimationFrame( animateR );
+    cube.rotation.y -= Math.PI/150;
+    renderer.render( scene, camera );
+    setTimeout(function (){
+        cube.rotation.y += Math.PI/150;
+        //renderer.render( scene, camera );      
+        cancelAnimationFrame( id );    
+        }, 1000);
+};
+function animateL() {
+    id = requestAnimationFrame( animateL );
+    cube.rotation.y += Math.PI/150;
+    renderer.render( scene, camera );
+    setTimeout(function (){
+        cube.rotation.y -= Math.PI/150;
+        cancelAnimationFrame( id );          
+        }, 1000);
+    
+
+};
+function onTurn(){
+    document.getElementById("left").disabled = true;
+    document.getElementById("right").disabled = true;
+    document.querySelector('#info').style.visibility = "hidden";
+    setTimeout(function (){
+        document.getElementById("left").disabled = false;
+        document.getElementById("right").disabled = false;
+        document.querySelector('#info').style.visibility = "visible";
+    }, 1100);
+}
 // document.querySelector('html').addEventListener('click', () => {
 //     alert('Ouch! Stop poking me!');
-//   });
-  
-
-let myImage = document.querySelector('img');
-
-myImage.onclick = function() {
-    let mySrc = myImage.getAttribute('src');
-    if(mySrc === 'images/rokit.png') {
-      myImage.setAttribute('src','images/transparent rokit.png');
-    } else {
-      myImage.setAttribute('src','images/rokit.png');
+// });
+let left = document.querySelector("#left");
+let right = document.querySelector("#right");
+left.onclick = function() {
+    onTurn();
+    //cube.rotation.x += 0.01;
+    animateL();
+    if(face !== 0){
+    face-=1;
     }
+    else{
+        face = 3;
+    }
+    document.querySelector('#info').textContent = face;
+    
 }
-let myButton = document.querySelector('button');
-let myHeading = document.querySelector('h1');
-function setUserName() {
-    let myName = prompt('Please enter your name.');
-    if(!myName) {
-      setUserName();
-    } else {
-      localStorage.setItem('name', myName);
-      myHeading.textContent = 'Mozilla is cool, ' + myName;
-    }
-  }
-  
-  if(!localStorage.getItem('name')) {
-    setUserName();
-  } else {
-    let storedName = localStorage.getItem('name');
-    myHeading.textContent = 'Mozilla is cool, ' + storedName;
-  }
-  myButton.onclick = function() {
-    setUserName();
-  }
-      
+right.onclick = function() {
+    onTurn();
+    animateR();
+    if(face !== 3){
+        face+=1;
+        }
+        else{
+            face = 0;
+        }
+    document.querySelector('#info').textContent = face;
+    
+}
+
+
+//animate();
+
+
