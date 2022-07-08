@@ -8,6 +8,7 @@ document.body.appendChild( renderer.domElement );
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 const cube = new THREE.Mesh( geometry, material );
+const deg = new THREE.Euler(0, 2 , 0);
 scene.add( cube );
 // const edges = new THREE.EdgesGeometry( geometry );
 // const line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
@@ -20,7 +21,7 @@ function animateR() {
     cube.rotation.y -= Math.PI/150;
     renderer.render( scene, camera );
     setTimeout(function (){
-        cube.rotation.y += Math.PI/150;
+        cube.rotation.y += Math.PI/150;  //think the cube keeps spinning, scene shown to user just cuts off at the right time, then picks up when button pressed again
         //renderer.render( scene, camera );      
         cancelAnimationFrame( id );    
         }, 1000);
@@ -46,6 +47,12 @@ function onTurn(){
         document.querySelector('#info').style.visibility = "visible";
     }, 1100);
 }
+
+function rotate(){
+    id = requestAnimationFrame( animateL );
+    cube.applyEuler(deg);
+    renderer.render( scene, camera );
+}
 // document.querySelector('html').addEventListener('click', () => {
 //     alert('Ouch! Stop poking me!');
 // });
@@ -67,6 +74,7 @@ left.onclick = function() {
 right.onclick = function() {
     onTurn();
     animateR();
+    //rotate();
     if(face !== 3){
         face+=1;
         }
