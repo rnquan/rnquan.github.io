@@ -1,3 +1,4 @@
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -6,7 +7,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const material = new THREE.MeshBasicMaterial( { color: 'gray' } );
 const cube = new THREE.Mesh( geometry, material );
 const deg = new THREE.Euler(0, 2 , 0);
 scene.add( cube );
@@ -81,7 +82,7 @@ left.onclick = function() {
     else{
         face = 3;
     }
-    document.querySelector('#info').textContent = face;
+    document.querySelector('#info').textContent = descriptions[face];
     
 }
 right.onclick = function() {
@@ -96,9 +97,11 @@ right.onclick = function() {
         else{
             face = 0;
         }
-    document.querySelector('#info').textContent = face;
+    document.querySelector('#info').textContent = descriptions[face];
     
 }
+
+var descriptions = ['face 0', 'face 1', 'face 2', 'face 3'];
 
 
 //animate();

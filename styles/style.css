@@ -30,23 +30,43 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: #111;
+  background-color: rgb(153, 22, 22);
 }
 .active {
   background-color: #04AA6D;
 }
-button{
-  margin-top: 100px;
+.button{
+  position: absolute;
+  padding: 30px;
+  top: 500px;
+	width: 10%;
+	text-align: center;
+  background-color:#ffffff2c;
+}
+.button:hover {
+  background-color:#ffffff;
+  transition: 0.4s;
+}
+/* .button:active {
+  background-color: #ffbf00;
+} 
+*/
+#right{
+  right: 10px;
+}
+#left{
+  left: 10px;
 }
 #info {
 	position: absolute;
 	top: 500px;
 	width: 100%;
 	text-align: center;
-  color:#04AA6D;
+  color:#ffffff;
 	z-index: 100;
 	display:block;
 }
+
 
 .chevron::before {
 	border-style: solid;
