@@ -12,30 +12,37 @@ const deg = new THREE.Euler(0, 2 , 0);
 scene.add( cube );
 // const edges = new THREE.EdgesGeometry( geometry );
 // const line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
-//scene.add( line );
+//scene.add( line );web-projects/animations/index.html
 face = 0;
 camera.position.z = 5;
 renderer.render( scene, camera );
 function animateR() {
-    id = requestAnimationFrame( animateR );
+    angle -= Math.PI/150;
     cube.rotation.y -= Math.PI/150;
-    renderer.render( scene, camera );
-    setTimeout(function (){
-        cube.rotation.y += Math.PI/150;  //think the cube keeps spinning, scene shown to user just cuts off at the right time, then picks up when button pressed again
-        //renderer.render( scene, camera );      
-        cancelAnimationFrame( id );    
-        }, 1000);
+    if(angle <= -Math.PI/2){
+        cancelAnimationFrame( id );
+    }
+    else{
+        id = requestAnimationFrame( animateR );
+        renderer.render( scene, camera );
+    }
+    
+    // setTimeout(function (){
+    //     cube.rotation.y += Math.PI/150;  //think the cube keeps spinning, scene shown to user just cuts off at the right time, then picks up when button pressed again
+    //     //renderer.render( scene, camera );      
+    //     cancelAnimationFrame( id );    
+    //     }, 1000);
 };
 function animateL() {
-    id = requestAnimationFrame( animateL );
+    angle += Math.PI/150;
     cube.rotation.y += Math.PI/150;
-    renderer.render( scene, camera );
-    setTimeout(function (){
-        cube.rotation.y -= Math.PI/150;
-        cancelAnimationFrame( id );          
-        }, 1000);
-    
-
+    if(angle >= Math.PI/2){
+        cancelAnimationFrame( id );
+    }
+    else{
+        id = requestAnimationFrame( animateL );
+        renderer.render( scene, camera );
+    }
 };
 function onTurn(){
     document.getElementById("left").disabled = true;
@@ -48,9 +55,8 @@ function onTurn(){
     }, 1100);
 }
 
-function rotate(){
-    id = requestAnimationFrame( animateL );
-    cube.applyEuler(deg);
+function animate(){
+    id = requestAnimationFrame( animate );
     renderer.render( scene, camera );
 }
 // document.querySelector('html').addEventListener('click', () => {
@@ -58,10 +64,17 @@ function rotate(){
 // });
 let left = document.querySelector("#left");
 let right = document.querySelector("#right");
+
+// let chev = document.querySelector(".chevron");
+// chev.onclick = function(){
+//     alert("afd");
+// }
 left.onclick = function() {
+    angle = 0;
     onTurn();
-    //cube.rotation.x += 0.01;
-    animateL();
+    id = requestAnimationFrame( animateL );
+    renderer.render( scene, camera );
+
     if(face !== 0){
     face-=1;
     }
@@ -72,9 +85,11 @@ left.onclick = function() {
     
 }
 right.onclick = function() {
+    angle = 0;
     onTurn();
-    animateR();
-    //rotate();
+    id = requestAnimationFrame( animateR );
+    renderer.render( scene, camera );
+    
     if(face !== 3){
         face+=1;
         }
