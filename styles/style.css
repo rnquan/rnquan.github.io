@@ -3,6 +3,9 @@ html {
     font-family: 'Kantumruy Pro', sans-serif;
     background-color: #302c2c;
   }
+  p{
+    color: #ffffff;
+  }
   h1 {
     margin: 0;
     font-size: 60px;
@@ -16,7 +19,7 @@ html {
     font-size: 40px;
     text-align: left;
     padding: 20px 0;
-    color: #ffffff;
+    color: #d41818;
     /* text-shadow: 3px 3px 1px black; */
   }
   #Linkedin{
@@ -90,7 +93,6 @@ html {
 .dropdown {
   float: left;
   overflow: hidden;
-
 }
 
 /* Dropdown button */
@@ -139,7 +141,7 @@ html {
   display: block;
 }
 .description{
-  color: #d41818;
+  color: #ffffff;
 }
 
 button{
@@ -155,9 +157,59 @@ button{
   margin: 10px;
 }
 
-.projectImg img{
-  height: 500px;
-  width: auto;
+.projectDiv{
+  position: relative;
+  width: 375px;
+  margin: 10px;
+}
+
+.projectDiv img{
+  outline: auto;
+  width: 375px;
+  height: auto;
+  left: 100px;
+  
+}
+.projectDiv h2{
+  height: auto;
+  width: 375px;
   left: 100px;
   margin: 10px;
+  position: absolute;
+  overflow: hidden;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.projectDiv p{
+  height: 360px;
+  width: 370px;
+  left: 100px;
+  margin: 10px;
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color:transparent;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+
+.projectDiv:hover .overlay {
+  bottom: 0;
+  height: 100%;
 }
