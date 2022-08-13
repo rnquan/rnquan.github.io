@@ -25,6 +25,11 @@ html {
     color: #d41818;
     /* text-shadow: 3px 3px 1px black; */
   }
+  h3{
+    font-size: 30px;
+    color: #d41818;
+    margin-left: 10px;
+  }
   #navigation{
     left: 0;
     right: 0;
@@ -168,29 +173,34 @@ button{
 }
 
 .aboutImg img{
-  height: 100px;
+  height: 500px;
   width: auto;
   left: 100px;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .projectDiv{
   position: relative;
-  width: 375px;
+  outline: auto;
+  width: 380px;
+  height: 400px;
   margin: 10px;
+  margin-top: 60px;
   z-index: -1;
 }
 
 .projectDiv img{
-  outline: auto;
-  width: 375px;
-  height: auto;
+  /* outline: auto; */
+  width: 380px;
+  height: 360px;
   left: 100px;
+  bottom: 0;
+  -webkit-filter: brightness(100%);
   
 }
 .projectDiv h2{
-  height: auto;
-  width: 375px;
+  height: 360px;
+  width: 370px;
   left: 100px;
   margin: 10px;
   position: absolute;
@@ -206,8 +216,9 @@ button{
   width: 370px;
   left: 100px;
   margin: 10px;
+  /* color: #302c2c; */
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   position: absolute;
   overflow: hidden;
   top: 50%;
@@ -220,6 +231,7 @@ button{
   bottom: 100%;
   left: 0;
   right: 0;
+  top: 55px;
   background-color:transparent;
   overflow: hidden;
   width: 100%;
@@ -230,4 +242,12 @@ button{
 .projectDiv:hover .overlay {
   bottom: 0;
   height: 100%;
+}
+.projectDiv:hover img {
+  -webkit-filter: brightness(40%);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
 }
