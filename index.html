@@ -3,6 +3,19 @@
   <link href="styles/style.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@200&display=swap" rel="stylesheet">
   <head>
+	<script type="text/javascript" async=1>
+	;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[]; p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments) };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1; n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://rnquan.github.io/sp.js","snowplow"));
+	window.snowplow('newTracker', 'sp1', 'sp-collector-lb-1862912402.us-east-1.elb.amazonaws.com', { 
+  		appId: 'my-app-id'
+	})
+	window.snowplow('trackPageView');
+	
+	</script>
+	<script type="text/javascript">
+		!function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits","startSession","endSession"],e.factory=function(t){return function(){e.push([t].concat(Array.prototype.slice.call(arguments)))}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
+		e.load("2SoT9dHH9CaopguHtaWbUx4yVJS","DATA_PLANE_URL"),
+		e.page()}();
+	</script>
     <link rel="stylesheet" href="https://use.typekit.net/eya4lis.css">
     <meta charset="utf-8">
     <title>Ryan Quan</title>
